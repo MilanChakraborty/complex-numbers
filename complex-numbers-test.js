@@ -3,41 +3,54 @@ const {deepStrictEqual} = require('assert');
 
 const { complexNumber } = require('./complex-numbers.js');
 
-let actual = "";
-let expected = "";
-
 describe("Testing for get real Part", function() {
-  const complexNum = complexNumber(); 
 
-  it("Should give zero when the real part is 0, 0 + 2i", function() {
-    actual = complexNum.getRealPart("0 + 2i");
-    expected = 0; 
+  it("Should give zero when the real part is 0", function() {
+    let complexNum = complexNumber({realPart: 0, imaginaryPart: 2}); 
+    let actual = complexNum.getRealPart();
+    let expected = 0; 
     deepStrictEqual(actual, expected);
   });
 
-  it("Should give the number when real part is negative, 2 + 3i", function() {
-
-    actual = complexNum.getRealPart("2 + 3i");
-    expected = 2;
+  it("Should give the number when real part is negative", function() {
+    complexNum = complexNumber({realPart: 1, imaginaryPart: 3})
+    actual = complexNum.getRealPart();
+    expected = 1;
     deepStrictEqual(actual, expected);
   });
 });
 
 
 describe("Testing for get imaginary Part", function() {
-  const complexNum = complexNumber(); 
 
   it("Should give zero when the imaginary part is 0i", function() {
-    actual = complexNum.getImaginaryPart("2 + 0i");
+    complexNum = complexNumber({realPart: 2, imaginaryPart: 0})
+    actual = complexNum.getImaginaryPart();
     expected = 0;
     deepStrictEqual(actual, expected);
   });
 
   it("Should give 3 when  the imaginary part is 3i", function() {
-    actual = complexNum.getImaginaryPart("2 + 3i");
-    expected = 3;
+    complexNum = complexNumber({realPart: 2, imaginaryPart: 1})
+    actual = complexNum.getImaginaryPart();
+    expected = 1;
+    deepStrictEqual(actual, expected);
+  });
+});
+
+describe("Testing for addition of complex numbers", function() {
+
+  it("Should give 0 when both the complex numbers has real parts and imaginary parts 0", function() {
+    complexNum = complexNumber({realPart: 0, imaginaryPart: 0})
+    actual = complexNum.add({realPart: 0, imaginaryPart: 0});
+    expected = {realPart: 0, imaginaryPart: 0};
     deepStrictEqual(actual, expected);
   });
 
+  it("Should give summation of realparts and imaginary parts as resultant imaginary number", function() {
+    complexNum = complexNumber({realPart: 2, imaginaryPart: 1})
+    actual = complexNum.add({realPart: 5, imaginaryPart: 6});
+    expected = {realPart: 7, imaginaryPart: 7};
+    deepStrictEqual(actual, expected);
+  });
 });
-
