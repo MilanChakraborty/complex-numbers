@@ -1,12 +1,8 @@
-const getProductOfRealPart = function(a, b, c, d) {
-  return ( a * c ) - ( b * d );
+const getSign = function(number) {
+  return number < 0 ? "-" : "+";
 }
 
-const getProductOfImaginaryPart = function(a, b, c, d) {
-  return ( a * d ) + ( b * c );
-}
-
-const complexNumber = function({realPart, imaginaryPart}) {
+const makeComplexNum = function({realPart, imaginaryPart}) {
 
   const getRealPart = function() {
     return realPart;
@@ -26,13 +22,25 @@ const complexNumber = function({realPart, imaginaryPart}) {
 
   const multiply = function(secNum) {
     const product = {realPart: 1, imaginaryPart: 1}
-    product.realPart = getProductOfRealPart(realPart, imaginaryPart, secNum.realPart, secNum.imaginaryPart);  
-    product.imaginaryPart = getProductOfImaginaryPart(realPart, imaginaryPart, secNum.realPart, secNum.imaginaryPart);
+    const a = realPart;
+    const b = imaginaryPart;
+    const { realPart: c, imaginaryPart: d } = secNum;
+
+    product.realPart = ( a * c ) - ( b * d );
+    product.imaginaryPart = ( a * d ) + ( b * c );
 
     return product;
   }
 
-  return { getRealPart, getImaginaryPart, add, multiply };
+  const showNumber = function() {
+    if(imaginaryPart === 0) return `${realPart}`;
+
+    if(realPart === 0) return `${imaginaryPart}i`;
+
+    return `${realPart} ${getSign(imaginaryPart)} ${Math.abs(imaginaryPart)}i`;
+  }
+
+  return { getRealPart, getImaginaryPart, add, multiply, showNumber };
 }
 
-exports.complexNumber = complexNumber;
+exports.makeComplexNum = makeComplexNum;
