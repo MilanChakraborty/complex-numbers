@@ -31,15 +31,13 @@ class ComplexNumber {
   }
 
   toString() {
-    const real = this.#real;
-    const imaginary = this.#imaginary;
-    const sign = this.#getSign(imaginary);
-    const imaginaryAbs = Math.abs(imaginary);
+    if(this.#imaginary === 0) return this.#real.toString();
+    if(this.#real === 0) return `${this.#imaginary}i`;
 
-    if(imaginary === 0) return `${real}`;
-    if(real === 0) return `${imaginary}i`;
+    const sign = this.#getSign(this.#imaginary);
+    const imaginaryAbs = Math.abs(this.#imaginary);
 
-    return `${real} ${sign} ${imaginaryAbs}i`;
+    return `${this.#real} ${sign} ${imaginaryAbs}i`;
   }
 }
 
