@@ -1,0 +1,26 @@
+
+Checklist
+
+  ✔ Think through every layer of project
+✔ Search Theasaurus synonyms (should be domain specific)
+  ✔ git commit
+  ✔ git push
+  ----------------
+
+  ✔ What is a complex number?
+
+  > it is a type consisting of real and imaginary part
+  ---------------
+
+  ✔ What can we perform on a complex number?
+
+  > we want to add, multiply and display a complex number
+  ----------------
+
+  ✔ Write test for auxiliary functions
+  ----------------
+
+  ✔ Write test for main functions
+  ----------------
+
+
