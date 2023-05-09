@@ -26,7 +26,7 @@ class Real {
 
   toString() {
     return `${this.#value}`
-  }
+    }
 }
 
 exports.Real = Real;
